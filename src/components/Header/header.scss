@@ -29,22 +29,26 @@
     }
 
     .nav {
-      ul {
-        li {
-          list-style: none;
-          color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-          a {
+      li {
+        list-style: none;
+        color: black;
+        padding: 0 3rem;
+
+        a {
+          color: black;
+          text-transform: uppercase;
+          letter-spacing: 0.2rem;
+          
+          &:link, &:active {
             color: black;
-            text-transform: uppercase;
-            letter-spacing: 0.2rem;
-            
-            &:link, &:active {
-              color: black;
-            }
           }
         }
       }
+      
     }
   }
 }
