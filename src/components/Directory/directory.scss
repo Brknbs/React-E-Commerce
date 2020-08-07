@@ -1,6 +1,5 @@
 .directory {
   height: 100%;
-  padding: 0 5rem;
 
   .wrap {
     height: 100%;
@@ -37,6 +36,7 @@
       font-weight: 400;
       border: 1px solid black;
       box-shadow: 5px 5px 20px rgba(0,0,0,0.3);
+      letter-spacing: 0.2rem;
 
       &:hover {
         background-color: black;

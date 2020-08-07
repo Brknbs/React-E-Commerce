@@ -20,7 +20,7 @@ body {
   line-height: 1;
 }
 
-a {
+a{
   text-decoration: none;
   cursor: pointer;
 }
@@ -29,9 +29,10 @@ a, a:hover {
   transition: all 0.2s ease-in-out;
 }
 
-// .App {
-//   max-width: 1450px;
-//   width: 100%;
-//   padding: 0 1rem;
-//   margin: 0 auto;
-// }
+.App {
+  padding: 0 5rem;
+}
+
+.full-height {
+  height: 100%;
+}

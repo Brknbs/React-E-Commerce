@@ -1,5 +1,7 @@
+@import '../../sass/variables.scss';
+
 .header {
-  height: 6.5rem;
+  height: $header-height;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
@@ -8,16 +10,40 @@
     //max-width: 1450px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     //background-color: yellow;
     width: 100%;
+    padding: 0 10rem;
 
     .logo {
-      width: 3rem;
+      width: 4rem;
 
-      img {
+      a {
         width: 100%;
-        display: inline-block;
+
+        img {
+          width: 100%;
+          display: inline-block;
+        }
+      }
+    }
+
+    .nav {
+      ul {
+        li {
+          list-style: none;
+          color: black;
+
+          a {
+            color: black;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            
+            &:link, &:active {
+              color: black;
+            }
+          }
+        }
       }
     }
   }

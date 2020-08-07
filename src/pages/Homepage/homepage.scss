@@ -1,5 +1,5 @@
-@import '../../sass/main.scss';
+@import '../../sass/variables.scss';
 
 .homepage {
-  height: calc(100vh - 6.5rem);
+  height: calc(100vh - #{$header-height} - #{$footer-height});
 }
