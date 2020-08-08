@@ -4,7 +4,7 @@ import Signup from '../../components/Signup/signup';
 
 const Registration = () => {
   return (
-    <div>
+    <div className="registration">
       <Signup />
     </div>
   )
