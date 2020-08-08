@@ -1,10 +1,11 @@
 import React from 'react';
 import './registration.scss';
+import Signup from '../../components/Signup/signup';
 
 const Registration = () => {
   return (
     <div>
-      <h1>Registration</h1>
+      <Signup />
     </div>
   )
 }
