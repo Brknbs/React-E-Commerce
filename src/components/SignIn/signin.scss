@@ -5,6 +5,7 @@
   max-width: 50rem;
 
   .wrap {
+    padding: 0 2rem;
 
     h2 {
       font-size: 2.2rem;
@@ -18,9 +19,17 @@
     }
 
     .formWrap {
-      .socialSignin {
-        Button {
-          margin-top: 3rem;
+      
+
+      Button {
+        margin-top: 1rem;
+      }
+
+      .extra-links {
+        padding : 2rem 0;
+
+        .reset-password {
+          color: black;
         }
       }
     }

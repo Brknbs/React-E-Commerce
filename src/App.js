@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Homepage from './pages/Homepage/homepage';
 import Registration from './pages/Registration/registration';
 import Login from './pages/Login/login';
+import Recovery from './pages/Recovery/recovery';
 import MainLayout from './layouts/MainLayout';
 import { auth, handleUserProfile } from './firebase/utils';
 
@@ -68,6 +69,12 @@ class App extends Component {
                 <Login />
               </MainLayout>
             )} />
+            <Route path="/recovery"
+              render={() => (
+                <MainLayout>
+                  <Recovery />
+                </MainLayout>
+              )} />
         </Switch>
       </div>
     );

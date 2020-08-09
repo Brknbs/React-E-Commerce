@@ -3,6 +3,7 @@ import './signin.scss';
 import Button from '../forms/Button/button';
 import FormInput from '../forms/FormInput/forminput';
 import { signInWithGoogle, auth } from './../../firebase/utils';
+import { Link } from 'react-router-dom';
 // import '../../sass/_grid.scss';
 
 const initialState = {
@@ -56,12 +57,16 @@ class SignIn extends Component {
               <FormInput type="email" name="email" placeholder="Email" value={email} handleChange={this.handleChange} />
               <FormInput type="password" name="password" placeholder="Password" value={password} handleChange={this.handleChange} />
               <Button type="submit" >Login</Button>
+              
               <div className="socialSignin">
                 <div>
                   <Button onClick={signInWithGoogle}>
                     Sign in with Google
                   </Button>
                 </div>
+              </div>
+              <div className="extra-links">
+                <Link to="/recovery" className="reset-password">Reset Password</Link>
               </div>
             </form>
           </div>
