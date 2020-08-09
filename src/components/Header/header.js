@@ -19,9 +19,14 @@ const Header = ({ currentUser }) => {
        <ul className="nav">
        {currentUser ? 
           (
-            <li>
-              <Link to="/registration" onClick={() => auth.signOut()}>Logout</Link>
-            </li>
+            <React.Fragment>
+              <li>
+                <Link to="/dashboard">My Account</Link>
+              </li>
+              <li>
+                <Link to="/registration" onClick={() => auth.signOut()}>Logout</Link>
+              </li>
+            </React.Fragment>
           ) : (
             <React.Fragment>
               <li>
