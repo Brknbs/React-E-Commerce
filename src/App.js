@@ -6,38 +6,27 @@ import Login from './pages/Login/login';
 import Recovery from './pages/Recovery/recovery';
 import MainLayout from './layouts/MainLayout';
 import { auth, handleUserProfile } from './firebase/utils';
-
-const initialState = {
-  currentUser: null
-};
+import setCurrentUser from './redux/User/user.actions';
+import { connect } from 'react-redux';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...initialState
-    };
-  }
-
   authListener = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
+
     this.authListener = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot(snapshot => {
-          this.setState({
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data()
-            }
+          setCurrentUser({
+            id: snapshot.id,
+            ...snapshot.data()
           })
         })
       }
 
-      this.setState({
-        ...initialState
-      });
+      setCurrentUser(userAuth);
     });
   }
 
@@ -46,7 +35,7 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser } = this.props;
 
     return (
       <div className="App">
@@ -81,4 +70,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ user }) => {
+  return {
+    currentUser: user.currentUser
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCurrentUser: user => dispatch(setCurrentUser(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
