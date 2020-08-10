@@ -13,25 +13,25 @@ import MainLayout from './layouts/MainLayout';
 import WithAuth from './hoc/withAuth';
 
 import { auth, handleUserProfile } from './firebase/utils';
-import setCurrentUser from './redux/User/user.actions';
-import { connect } from 'react-redux';
+import { setCurrentUser } from './redux/User/user.actions';
+import { useSelector, useDispatch } from 'react-redux';
 
-const App = (props) => {
-  const { setCurrentUser, currentUser } = props;
+const App = props => {
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const authListener = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot(snapshot => {
-          setCurrentUser({
+          dispatch(setCurrentUser({
             id: snapshot.id,
             ...snapshot.data()
-          });
+          }));
         });
       }
 
-      setCurrentUser(userAuth);
+      dispatch(setCurrentUser(userAuth));
     });
 
     //unmount
@@ -45,20 +45,20 @@ const App = (props) => {
     <div className="App">
       <Switch>
         <Route exact path="/" render={() => (
-          <MainLayout currentUser={currentUser}>
+          <MainLayout >
             <Homepage />
           </MainLayout>
         )}
         />
         <Route path="/registration" 
           render={() =>  (
-          <MainLayout currentUser={currentUser}>
+          <MainLayout >
             <Registration />
           </MainLayout>
         )} />
         <Route path="/login"
           render={() => (
-            <MainLayout currentUser={currentUser}>
+            <MainLayout >
               <Login />
             </MainLayout>
           )} />
@@ -82,16 +82,4 @@ const App = (props) => {
   
 }
 
-const mapStateToProps = ({ user }) => {
-  return {
-    currentUser: user.currentUser
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setCurrentUser: user => dispatch(setCurrentUser(user))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
